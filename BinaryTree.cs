@@ -42,9 +42,37 @@ namespace TestFinalFirstWeek
             return node;
         }
 
-        internal void Insert(object min)
+        public void PrintTree()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Tree structor with left/right wrbg");
+            Console.WriteLine();
+            PrintTree(Root, "", true);
         }
+
+        private void PrintTree(Node node, string st, bool isLast)
+        {
+            if (node == null)
+                return;
+           
+            Console.Write(st);
+            
+            if (isLast)
+            {
+                Console.Write("└──right ");
+                st += "   ";
+            }
+            else
+            {
+                Console.Write("├──left ");
+                st += "│   ";
+            }
+
+            Console.WriteLine($"[{node.MinSeverity}-{node.MaxSeverity}] defense: ;sjkjvfadifpivpav");
+
+            PrintTree(node.Left, st, false);
+            PrintTree(node.Right, st, true);
+        }
+
+
     }
 }

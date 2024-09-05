@@ -27,31 +27,4 @@ namespace TestFinalFirstWeek
         }
     }
 }
-///public void PrintTree()
-//{
-//    PrintTree(Root, "", true);
-//}
 
-//private void PrintTree(TreeNode node, string indent, bool isLast)
-//{
-//    if (node == null)
-//        return;
-
-//    Console.Write(indent);
-
-//    if (isLast)
-//    {
-//        Console.Write("└── ");
-//        indent += "    ";
-//    }
-//    else
-//    {
-//        Console.Write("├── ");
-//        indent += "│   ";
-//    }
-
-//    Console.WriteLine(node.Data);
-
-//    PrintTree(node.Left, indent, false);
-//    PrintTree(node.Right, indent, true);
-//}
