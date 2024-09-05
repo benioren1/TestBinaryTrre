@@ -90,7 +90,7 @@ namespace TestFinalFirstWeek
             PrintTree(Root, "", true);
         }
 
-        //O(n)
+          //O(n)
         //הדפסת עץ בצורת
         private void PrintTree(Node node, string st, bool isLast)
         {
@@ -102,7 +102,7 @@ namespace TestFinalFirstWeek
             if (isLast)
             {
                 Console.Write("└──right ");
-                st += "   ";
+                st += "    ";
             }
             else
             {
@@ -110,7 +110,7 @@ namespace TestFinalFirstWeek
                 st += "│   ";
             }
 
-            Console.WriteLine($"[{node.MinSeverity}-{node.MaxSeverity}] defense: ;sjkjvfadifpivpav");
+            Console.WriteLine($"[{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[0]},{node.Defenses[1]}");
 
             PrintTree(node.Left, st, false);
             PrintTree(node.Right, st, true);
