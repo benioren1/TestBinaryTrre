@@ -2,6 +2,8 @@
 using System.Text.Json;
 using System.Xml.Linq;
 using TestFinalFirstWeek;
+using TestFinalFirstWeek.Services;
+
 
 public class Program
 {
@@ -9,39 +11,24 @@ public class Program
     public static object JsonFileReader { get; private set; }
     public static BinaryTree binaryTree = new BinaryTree();
 
-    public static void Main(string[] args)
+    public static ServicToNode _servicToNode =new ServicToNode();
+    public static ServicToTereats _servicToTereatsNode =new ServicToTereats();
+    public static  async Task Main(string[] args)
     {
-        //קריאה לגייסון של אסטרטגיית הגנות
-        //שמירת הנתיב של הגייסון
-        string filePath = @"C:\testTrre\TestFinalFirstWeek\defenceStrategiesBalanced.json";
 
-        //להפוך את הקובץ גייסון לקריא על ידי הפיכתו לסטרינג
-        string jsonString = File.ReadAllText(filePath);
-
-        //הפיכתו של הסטרינג לרשימה של אובייקטים
-        List<Node> trees = JsonSerializer.Deserialize<List<Node>>(jsonString);
-
+        List<Node> list= _servicToNode.LoeadJson();
+        
         Console.WriteLine();
+        binaryTree =  _servicToNode.InsertToTree(list);
 
-        if (trees != null)
-           //הכנסה של כל האיברים מהרשימה לתוך עץ
-        foreach (Node node in trees)
-            {
-                
+        //binaryTree.PrintTree();
 
-                binaryTree.Insert(node.MinSeverity,node.MaxSeverity,node.Defenses);
 
-            }
-        //עד כאן הגנה
+        List<ThreatsNode> listtereats = _servicToTereatsNode.LoeadJsonForTereats();
 
-        //עכשיו אני יקרא את הגייסון של החומרה
-        string filePath2 = @"C:\testTrre\TestFinalFirstWeek\tereats.json";
-
-        //להפוך את הקובץ גייסון לקריא על ידי הפיכתו לסטרינג
-        string jsonString2 = File.ReadAllText(filePath2);
-
-        //הפיכתו של הסטרינג לרשימה של אובייקטים
-        List<Node> trees = JsonSerializer.Deserialize<List<Node>>(jsonString);
+        _servicToTereatsNode.StartAtaack(listtereats, binaryTree);
+        Console.ReadLine();
+       
 
 
     }

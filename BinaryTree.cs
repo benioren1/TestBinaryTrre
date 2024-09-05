@@ -42,6 +42,41 @@ namespace TestFinalFirstWeek
             return node;
         }
 
+        //מציאת איבר בעץ בינארי
+        public void Find(string name,int data)
+        {
+             FindRecursive(name,data, Root);
+        }
+
+        //מציאת איבר בעץ בינארי
+        private void FindRecursive(string name ,int data, Node node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            
+            if (data >= node.MinSeverity && data<= node.MaxSeverity)
+            {
+                Thread.Sleep(2000);
+                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[0]} ");
+                Thread.Sleep(2000);
+                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[1]} ");
+                Console.WriteLine();
+            }
+
+            if (data < node.MinSeverity )
+            {
+                 FindRecursive(name,data, node.Left);
+            }
+            else
+            {
+                 FindRecursive(name,data, node.Right);
+            }
+        }
+
+
+        //הדפסת עץ בצורת 
         public void PrintTree()
         {
             Console.WriteLine($"Tree structor with left/right wrbg");
