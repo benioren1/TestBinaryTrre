@@ -11,6 +11,10 @@ namespace TestFinalFirstWeek.Services
     public class ServicToNode
     {
         public static BinaryTree binaryTree = new BinaryTree();
+
+
+        //O(1)
+        //פןנקצייה שמטעינה את הגייסון של הגנות
         public List<Node> LoeadJson()
         {
             string filePath = @"C:\testTrre\TestFinalFirstWeek\defenceStrategiesBalanced.json";
@@ -30,6 +34,8 @@ namespace TestFinalFirstWeek.Services
             }
         }
 
+        //O(n(log)n)
+        //פןנקצייה שלוקחת מערך של הגנות ועושה ממנו עץ
         public BinaryTree InsertToTree(List<Node> list)
         {
             if (list != null)

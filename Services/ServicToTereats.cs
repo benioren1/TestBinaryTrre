@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace TestFinalFirstWeek.Services
 {
     public class ServicToTereats
     {
+        //O(1)
         //מילון ששומר טווחים של סוגי מטרות לתקיפה
         public Dictionary<string, int> targets = new Dictionary<string, int>()
             {
@@ -16,7 +18,7 @@ namespace TestFinalFirstWeek.Services
                 {"Database" , 15 },
                 {"User Credentials" , 20 },
             };
-
+        //O(1)
         //פונקציה שמטעינה את הגייסון של ההתקפות
         public List<ThreatsNode> LoeadJsonForTereats()
         {
@@ -34,6 +36,7 @@ namespace TestFinalFirstWeek.Services
                 return new List<ThreatsNode>();
             }
         }
+        //O(1)
         //פונקציה שמחזירה את הטווח של החומרה
         public int Getseverity(ThreatsNode node)
         {
@@ -55,6 +58,8 @@ namespace TestFinalFirstWeek.Services
                 return 5;
             }
         }
+
+        //O(n(log)n)
         //פונקציה שמקבלת ליסט של התקפות ועץ ומפעילה התקפות ומחפשת הגנות בעץ
         public void StartAtaack(List<ThreatsNode> list,BinaryTree binaryTree)
         {
@@ -66,9 +71,25 @@ namespace TestFinalFirstWeek.Services
                 }
             }
         }
+        //O(1)
+        //פונקציה שמדפיסה לי אם נמצא התאמה להגנה או לא
+        public void printstatus(Node? node , string? name)
+        {
 
+            if (node == null && name == null)
+            {
+                Console.WriteLine("was defence suitable No!found. Brace for impact");
+            }
 
-
+            if (node != null && name != null)
+            {
+                Thread.Sleep(2000);
+                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[0]} ");
+                Thread.Sleep(2000);
+                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[1]} ");
+                Console.WriteLine();
+            }
+        }
 
     }
 }

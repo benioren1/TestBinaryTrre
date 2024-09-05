@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestFinalFirstWeek.Services;
 
 namespace TestFinalFirstWeek
 {
     public class BinaryTree
     {
+        public static ServicToTereats _servicToTereatsNode = new ServicToTereats();
         public  Node Root { get; set; }
-        //public string Sun { get; set; }
-
+       
         public BinaryTree()
         {
             Root = null;
-            //Sun = "";
         }
 
+        //O(log)n)
+        //הכנסה של איבר לעץ
         public void Insert(int min,int max,List<string> defense)
         {
             Root = Insert(min,max,defense, Root);
         }
 
+        //O(log)n)
+        //הכנסה של איבר לעץ
         private Node Insert(int min,int max,List<string> defense, Node node)
         {
             if (node == null)
@@ -42,27 +46,29 @@ namespace TestFinalFirstWeek
             return node;
         }
 
+        //O(log)n)
         //מציאת איבר בעץ בינארי
         public void Find(string name,int data)
         {
              FindRecursive(name,data, Root);
         }
 
+        //O(log)n)
         //מציאת איבר בעץ בינארי
         private void FindRecursive(string name ,int data, Node node)
         {
             if (node == null)
             {
+                _servicToTereatsNode.printstatus(null,null);
+                Console.WriteLine();
+                Thread.Sleep(2000);
                 return;
             }
             
             if (data >= node.MinSeverity && data<= node.MaxSeverity)
             {
-                Thread.Sleep(2000);
-                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[0]} ");
-                Thread.Sleep(2000);
-                Console.WriteLine($"Attck: {name}  [{node.MinSeverity}-{node.MaxSeverity}] defense: {node.Defenses[1]} ");
-                Console.WriteLine();
+                _servicToTereatsNode.printstatus(node, name);
+                return;
             }
 
             if (data < node.MinSeverity )
@@ -75,7 +81,7 @@ namespace TestFinalFirstWeek
             }
         }
 
-
+        //O(n)
         //הדפסת עץ בצורת 
         public void PrintTree()
         {
@@ -84,6 +90,8 @@ namespace TestFinalFirstWeek
             PrintTree(Root, "", true);
         }
 
+        //O(n)
+        //הדפסת עץ בצורת
         private void PrintTree(Node node, string st, bool isLast)
         {
             if (node == null)
