@@ -15,11 +15,12 @@ namespace TestFinalFirstWeek
         public Node Left { get; set; }
         public Node Right { get; set; }
 
-        public Node(int minSeverity, int maxSeverity)
+        public Node(int minSeverity, int maxSeverity,List<string> defenses)
         {
 
             this.MinSeverity = minSeverity; 
             this.MaxSeverity = maxSeverity;
+            this.Defenses = defenses;
             Left = null;
             Right = null;
 
